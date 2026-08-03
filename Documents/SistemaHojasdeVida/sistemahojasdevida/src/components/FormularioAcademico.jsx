@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function FormacionAcademica({ anterior, siguiente }) {
+function FormacionAcademica({ persona, setPersona, anterior, siguiente }) {
   const [nivel, setNivel] = useState("");
   const [institucion, setInstitucion] = useState("");
   const [titulo, setTitulo] = useState("");

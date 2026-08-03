@@ -11,16 +11,53 @@ import './App.css';
 function App() {
   const [paso, setPaso] = useState(1);
 
+  //datos compartidos
+  const [persona,setPersona] = useState({
+    
+    
+    //datos personales de la persona
+    foto: null,
+    nombre:"",
+    edad:"",
+    ciudad:"",
+    correo:"",
+    programa:"",
+    ficha:"",
+    jornada:"Mañana",
+
+    //informmación de estudios
+    nivel:"",
+    institucion:"",
+    titulo:"",
+    anio:"",
+    cursos:"",
+
+    //experiencia
+    empresa:"",
+    cargo:"",
+    tiempo:"",
+    funciones:"",
+    habilidades:"",
+
+
+  })
+
   return (
     <div className='contenedor'>
       <Header />
 
       {paso === 1 && (
-        <FormularioDatos siguiente={() => setPaso(2)} />
+        <FormularioDatos 
+        persona = {persona}
+        setPersona = {setPersona}
+        siguiente={() => setPaso(2)} 
+        />
       )}
 
       {paso === 2 && (
         <FormacionAcademica
+          persona = {persona}
+          setPersona = {setPersona}
           anterior={() => setPaso(1)}
           siguiente={() => setPaso(3)}
         />
@@ -28,6 +65,8 @@ function App() {
 
       {paso === 3 && (
         <ExperienciaLaboral
+          persona = {persona}
+          setPersona = {setPersona}
           anterior={() => setPaso(2)}
           siguiente={() => setPaso(4)}
         />

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function FormularioDatos({ siguiente }) {
+function FormularioDatos({ persona, setPersona, siguiente }) {
 
   const [foto, setFoto] = useState(null);
   const [nombre, setNombre] = useState("");
@@ -46,8 +46,8 @@ function FormularioDatos({ siguiente }) {
           <input
             type="text"
             placeholder="Ingrese su nombre"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
+            value={persona.nombre}
+            onChange={(e) => setPersona(...persona,nombre. e.target.value)}
           />
         </div>
 
@@ -56,8 +56,8 @@ function FormularioDatos({ siguiente }) {
           <input
             type="number"
             placeholder="Ingrese su edad"
-            value={edad}
-            onChange={(e) => setEdad(e.target.value)}
+            value={persona.edad}
+            onChange={(e) => setPersona(...persona,edad: e.target.value)}
           />
         </div>
 
@@ -66,8 +66,8 @@ function FormularioDatos({ siguiente }) {
           <input
             type="text"
             placeholder="Ingrese su ciudad"
-            value={ciudad}
-            onChange={(e) => setCiudad(e.target.value)}
+            value={persona.ciudad}
+            onChange={(e) => setPersona(...persona,ciudad: e.target.value)}
           />
         </div>
 
@@ -76,8 +76,8 @@ function FormularioDatos({ siguiente }) {
           <input
             type="text"
             placeholder="Ejemplo: ADSO"
-            value={programa}
-            onChange={(e) => setPrograma(e.target.value)}
+            value={persona.programa}
+            onChange={(e) => setPrograma(...persona,programa: e.target.value)}
           />
         </div>
 
@@ -86,8 +86,8 @@ function FormularioDatos({ siguiente }) {
           <input
             type="email"
             placeholder="correo@misena.edu.co"
-            value={correo}
-            onChange={(e) => setCorreo(e.target.value)}
+            value={persona.correo}
+            onChange={(e) => setCorreo(...persona,correo: e.target.value)}
           />
         </div>
 
@@ -96,16 +96,16 @@ function FormularioDatos({ siguiente }) {
           <input
             type="number"
             placeholder="Ingrese la ficha"
-            value={ficha}
-            onChange={(e) => setFicha(e.target.value)}
+            value={persona.ficha}
+            onChange={(e) => setFicha(...persona,ficha: e.target.value)}
           />
         </div>
 
         <div className="grupo">
           <label>Jornada</label>
           <select
-            value={jornada}
-            onChange={(e) => setJornada(e.target.value)}
+            value={persona.jornada}
+            onChange={(e) => setJornada(...persona,jornada: e.target.value)}
           >
             <option value="Mañana">Mañana</option>
             <option value="Tarde">Tarde</option>
