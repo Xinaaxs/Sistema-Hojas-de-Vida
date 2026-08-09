@@ -1,0 +1,217 @@
+/* ===========================
+   ESTILOS GENERALES
+=========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f3f4f6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Página */
+.pagina-formacion,
+.formulario {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* Título principal */
+.pagina-formacion h1 {
+  color: #1f2937;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Tarjeta */
+.tarjeta-formulario,
+.formulario {
+  width: 100%;
+  max-width: 850px;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Título del formulario */
+.tarjeta-formulario h2,
+.formulario h2 {
+  text-align: center;
+  color: #111827;
+  font-size: 1.7rem;
+  margin-bottom: 30px;
+}
+
+/* ===========================
+   GRID
+=========================== */
+
+.grid-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Para FormularioDatos (si no usa grid) */
+.formulario form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Campos que ocupan todo el ancho */
+.grupo-completo {
+  grid-column: 1 / -1;
+}
+
+/* ===========================
+   CAMPOS
+=========================== */
+
+.grupo {
+  display: flex;
+  flex-direction: column;
+}
+
+.grupo label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.grupo input,
+.grupo select,
+.grupo textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 15px;
+  color: #111827;
+  background: #ffffff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.grupo input[type='file'] {
+  padding: 10px;
+}
+
+.grupo textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.grupo input:focus,
+.grupo select:focus,
+.grupo textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* ===========================
+   BOTONES
+=========================== */
+
+.botones {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.btn,
+.formulario button[type='submit'] {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 13px 22px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* El botón submit del primer formulario ocupa todo el ancho */
+.formulario button[type='submit'] {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.btn:hover,
+.formulario button[type='submit']:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.btn:active,
+.formulario button[type='submit']:active {
+  transform: scale(0.98);
+}
+
+/* Botón anterior */
+.btn:first-child {
+  background: #6b7280;
+}
+
+.btn:first-child:hover {
+  background: #4b5563;
+}
+
+
+
+footer {
+  margin-top: 25px;
+  color: #6b7280;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+
+@media (max-width: 768px) {
+  .grid-form,
+  .formulario form {
+    grid-template-columns: 1fr;
+  }
+
+  .botones {
+    flex-direction: column;
+  }
+
+  .btn,
+  .formulario button[type='submit'] {
+    width: 100%;
+  }
+
+  .tarjeta-formulario,
+  .formulario {
+    padding: 25px;
+  }
+
+  .pagina-formacion h1 {
+    font-size: 1.6rem;
+  }
+}
+
+.seccion-resumen {
+    margin-bottom: 20px;
+    text-align: left;
+}
+.seccion-resumen h3 {
+    color: #007bff; /* O tu color institucional */
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
