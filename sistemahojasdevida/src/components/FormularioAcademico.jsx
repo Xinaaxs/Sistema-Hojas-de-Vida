@@ -1,11 +1,30 @@
 import { useState } from "react";
 
 function FormacionAcademica({ persona, setPersona, anterior, siguiente }) {
-  const [nivel, setNivel] = useState("");
-  const [institucion, setInstitucion] = useState("");
-  const [titulo, setTitulo] = useState("");
-  const [anio, setAnio] = useState("");
-  const [cursos, setCursos] = useState("");
+  // Estado temporal para escribir un curso
+  const [nuevoCurso, setNuevoCurso] = useState("");
+
+  // Agregar curso
+  const agregarCurso = () => {
+    if (nuevoCurso.trim() === "") return;
+
+    setPersona({
+      ...persona,
+      cursos: [...persona.cursos, nuevoCurso]
+    });
+
+    setNuevoCurso("");
+  };
+
+  // Eliminar curso
+  const eliminarCurso = (indice) => {
+    const cursosActualizados = persona.cursos.filter((_, i) => i !== indice);
+
+    setPersona({
+      ...persona,
+      cursos: cursosActualizados
+    });
+  };
 
   const continuar = (e) => {
     e.preventDefault();
@@ -14,7 +33,7 @@ function FormacionAcademica({ persona, setPersona, anterior, siguiente }) {
 
   return (
     <div className="pagina-formacion">
-      <h1>Sistema de Registro Hojas de vida</h1>
+      <h1>Sistema de Registro Hojas de Vida</h1>
 
       <div className="tarjeta-formulario">
         <form onSubmit={continuar}>
@@ -25,7 +44,9 @@ function FormacionAcademica({ persona, setPersona, anterior, siguiente }) {
               <label>Nivel de Formación</label>
               <select
                 value={persona.nivel}
-                onChange={(e) => setPersona({...persona, nivel: e.target.value})}
+                onChange={(e) =>
+                  setPersona({ ...persona, nivel: e.target.value })
+                }
               >
                 <option value="">Seleccione...</option>
                 <option>Técnico</option>
@@ -41,7 +62,9 @@ function FormacionAcademica({ persona, setPersona, anterior, siguiente }) {
                 type="text"
                 placeholder="Ingrese la institución"
                 value={persona.institucion}
-                onChange={(e) => setPersona({...persona, institucion: e.target.value})}
+                onChange={(e) =>
+                  setPersona({ ...persona, institucion: e.target.value })
+                }
               />
             </div>
 
@@ -51,7 +74,9 @@ function FormacionAcademica({ persona, setPersona, anterior, siguiente }) {
                 type="text"
                 placeholder="Ingrese el título"
                 value={persona.titulo}
-                onChange={(e) => setPersona({...persona, titulo: e.target.value})}
+                onChange={(e) =>
+                  setPersona({ ...persona, titulo: e.target.value })
+                }
               />
             </div>
 
@@ -61,27 +86,52 @@ function FormacionAcademica({ persona, setPersona, anterior, siguiente }) {
                 type="number"
                 placeholder="Ejemplo: 2025"
                 value={persona.anio}
-                onChange={(e) => setPersona({...persona, anio: e.target.value})}
+                onChange={(e) =>
+                  setPersona({ ...persona, anio: e.target.value })
+                }
               />
             </div>
 
             <div className="grupo grupo-completo">
               <label>Cursos Realizados</label>
-              <textarea
-                rows="3"
-                placeholder="Escriba los cursos realizados"
-                value={persona.cursos}
-                onChange={(e) => setPersona({...persona, cursos: e.target.value})}
-              />
+
+              <div className="fila-curso">
+                <input
+                  type="text"
+                  placeholder="Escriba un curso"
+                  value={nuevoCurso}
+                  onChange={(e) => setNuevoCurso(e.target.value)}
+                />
+
+                <button
+                  type="button"
+                  className="btn-agregar"
+                  onClick={agregarCurso}
+                >
+                  + Agregar
+                </button>
+              </div>
+
+              <div className="lista-cursos">
+                {persona.cursos.map((curso, indice) => (
+                  <div key={indice} className="curso-item">
+                    <span>{curso}</span>
+
+                    <button
+                      type="button"
+                      className="btn-eliminar"
+                      onClick={() => eliminarCurso(indice)}
+                    >
+                      Eliminar
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
           <div className="botones">
-            <button
-              type="button"
-              className="btn"
-              onClick={anterior}
-            >
+            <button type="button" className="btn" onClick={anterior}>
               ← Anterior
             </button>
 

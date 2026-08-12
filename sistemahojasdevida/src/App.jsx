@@ -31,14 +31,10 @@ function App() {
     institucion:"",
     titulo:"",
     anio:"",
-    cursos:"",
+    cursos:[],
 
     //experiencia
-    empresa:"",
-    cargo:"",
-    tiempo:"",
-    funciones:"",
-    habilidades:"",
+    experiencias: []
 
 
   })

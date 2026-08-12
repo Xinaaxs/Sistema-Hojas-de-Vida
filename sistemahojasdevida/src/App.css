@@ -1,217 +1,372 @@
 /* ===========================
-   ESTILOS GENERALES
+ESTILOS GENERALES
 =========================== */
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+  }
 
 body {
-  background: #f3f4f6;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Página */
-.pagina-formacion,
-.formulario {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-}
-
-/* Título principal */
-.pagina-formacion h1 {
-  color: #1f2937;
-  font-size: 2rem;
-  margin-bottom: 25px;
-  text-align: center;
-}
-
-/* Tarjeta */
-.tarjeta-formulario,
-.formulario {
-  width: 100%;
-  max-width: 850px;
-  background: #ffffff;
-  padding: 35px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-}
-
-/* Título del formulario */
-.tarjeta-formulario h2,
-.formulario h2 {
-  text-align: center;
-  color: #111827;
-  font-size: 1.7rem;
-  margin-bottom: 30px;
+background: #f3f4f6;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: #1f2937;
 }
 
 /* ===========================
-   GRID
+PÁGINA
+=========================== */
+
+.pagina-formacion,
+.formulario {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+background: linear-gradient(135deg, #eff6ff, #f8fafc);
+padding: 40px 20px;
+}
+
+.pagina-formacion h1 {
+color: #1e3a8a;
+font-size: 2rem;
+margin-bottom: 25px;
+text-align: center;
+font-weight: 700;
+}
+
+/* ===========================
+TARJETA
+=========================== */
+
+.tarjeta-formulario,
+.formulario {
+width: 100%;
+max-width: 900px;
+background: #ffffff;
+padding: 35px;
+border-radius: 18px;
+box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.tarjeta-formulario h2,
+.formulario h2 {
+text-align: center;
+color: #111827;
+font-size: 1.7rem;
+margin-bottom: 30px;
+}
+
+/* ===========================
+GRID
 =========================== */
 
 .grid-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 20px;
 }
 
-/* Para FormularioDatos (si no usa grid) */
 .formulario form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 20px;
 }
 
-/* Campos que ocupan todo el ancho */
 .grupo-completo {
-  grid-column: 1 / -1;
+grid-column: 1 / -1;
 }
 
 /* ===========================
-   CAMPOS
+CAMPOS
 =========================== */
 
 .grupo {
-  display: flex;
-  flex-direction: column;
+display: flex;
+flex-direction: column;
 }
 
 .grupo label {
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #374151;
+margin-bottom: 8px;
+font-weight: 600;
+color: #374151;
 }
 
 .grupo input,
 .grupo select,
 .grupo textarea {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  font-size: 15px;
-  color: #111827;
-  background: #ffffff;
-  outline: none;
-  transition: all 0.3s ease;
+width: 100%;
+padding: 12px 14px;
+border: 1px solid #d1d5db;
+border-radius: 12px;
+font-size: 15px;
+color: #111827;
+background: #ffffff;
+outline: none;
+transition: all 0.3s ease;
 }
 
 .grupo input[type='file'] {
-  padding: 10px;
+padding: 10px;
 }
 
 .grupo textarea {
-  resize: vertical;
-  min-height: 100px;
+resize: vertical;
+min-height: 100px;
 }
 
 .grupo input:focus,
 .grupo select:focus,
 .grupo textarea:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+border-color: #2563eb;
+box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
 }
 
 /* ===========================
-   BOTONES
+BOTONES
 =========================== */
 
 .botones {
-  grid-column: 1 / -1;
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  margin-top: 25px;
+grid-column: 1 / -1;
+display: flex;
+justify-content: space-between;
+gap: 15px;
+margin-top: 25px;
 }
 
 .btn,
 .formulario button[type='submit'] {
-  background: #2563eb;
-  color: white;
-  border: none;
-  padding: 13px 22px;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+background: #2563eb;
+color: white;
+border: none;
+padding: 13px 22px;
+border-radius: 12px;
+font-size: 15px;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s ease;
 }
 
-/* El botón submit del primer formulario ocupa todo el ancho */
 .formulario button[type='submit'] {
-  grid-column: 1 / -1;
-  width: 100%;
+grid-column: 1 / -1;
+width: 100%;
 }
 
 .btn:hover,
 .formulario button[type='submit']:hover {
-  background: #1d4ed8;
-  transform: translateY(-2px);
+background: #1d4ed8;
+transform: translateY(-2px);
 }
 
 .btn:active,
 .formulario button[type='submit']:active {
-  transform: scale(0.98);
+transform: scale(0.98);
 }
 
-/* Botón anterior */
-.btn:first-child {
-  background: #6b7280;
+.botones .btn:first-child {
+background: #6b7280;
 }
 
-.btn:first-child:hover {
-  background: #4b5563;
+.botones .btn:first-child:hover {
+background: #4b5563;
 }
 
+/* ===========================
+CURSOS
+=========================== */
 
-
-footer {
-  margin-top: 25px;
-  color: #6b7280;
-  font-size: 14px;
-  text-align: center;
+.fila-curso {
+display: flex;
+gap: 10px;
+margin-bottom: 15px;
 }
 
-
-
-@media (max-width: 768px) {
-  .grid-form,
-  .formulario form {
-    grid-template-columns: 1fr;
-  }
-
-  .botones {
-    flex-direction: column;
-  }
-
-  .btn,
-  .formulario button[type='submit'] {
-    width: 100%;
-  }
-
-  .tarjeta-formulario,
-  .formulario {
-    padding: 25px;
-  }
-
-  .pagina-formacion h1 {
-    font-size: 1.6rem;
-  }
+.fila-curso input {
+flex: 1;
 }
+
+.btn-agregar {
+background: #2563eb;
+color: white;
+border: none;
+padding: 12px 18px;
+border-radius: 10px;
+cursor: pointer;
+font-weight: 600;
+transition: background 0.3s ease;
+}
+
+.btn-agregar:hover {
+background: #1d4ed8;
+}
+
+.lista-cursos {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+.curso-item {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: #f8fafc;
+border: 1px solid #dbeafe;
+padding: 14px 16px;
+border-radius: 12px;
+}
+
+.curso-item span {
+font-weight: 500;
+color: #1e293b;
+}
+
+/* ===========================
+EXPERIENCIAS
+=========================== */
+
+.lista-experiencias {
+display: flex;
+flex-direction: column;
+gap: 16px;
+margin-top: 20px;
+}
+
+.experiencia-item {
+background: #ffffff;
+border: 1px solid #dbeafe;
+border-left: 5px solid #2563eb;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.experiencia-item p {
+margin: 6px 0;
+color: #334155;
+}
+
+.experiencia-item strong {
+color: #0f172a;
+}
+
+.experiencia-item hr {
+margin-top: 15px;
+border: none;
+border-top: 1px solid #e2e8f0;
+}
+
+.btn-eliminar {
+margin-top: 12px;
+background: #ef4444;
+color: white;
+border: none;
+padding: 8px 16px;
+border-radius: 10px;
+cursor: pointer;
+transition: background 0.3s ease;
+}
+
+.btn-eliminar:hover {
+background: #dc2626;
+}
+
+/* ===========================
+VISTA PREVIA
+=========================== */
 
 .seccion-resumen {
-    margin-bottom: 20px;
-    text-align: left;
+margin-bottom: 25px;
+text-align: left;
 }
+
 .seccion-resumen h3 {
-    color: #007bff; /* O tu color institucional */
-    border-bottom: 2px solid #eee;
-    padding-bottom: 5px;
+color: #2563eb;
+border-bottom: 2px solid #dbeafe;
+padding-bottom: 8px;
+margin-bottom: 15px;
+}
+
+.detalle {
+background: #f8fafc;
+border: 1px solid #e5e7eb;
+border-radius: 12px;
+padding: 15px;
+margin-bottom: 15px;
+}
+
+.detalle p {
+margin: 6px 0;
+}
+
+.seccion-resumen ul {
+padding-left: 20px;
+margin-top: 8px;
+}
+
+.seccion-resumen li {
+margin-bottom: 6px;
+}
+
+.contenedor-foto img {
+width: 140px;
+height: 140px;
+object-fit: cover;
+border-radius: 50%;
+border: 4px solid #2563eb;
+box-shadow: 0 6px 15px rgba(37, 99, 235, 0.25);
+}
+
+/* ===========================
+FOOTER
+=========================== */
+
+footer {
+margin-top: 25px;
+color: #6b7280;
+font-size: 14px;
+text-align: center;
+}
+
+/* ===========================
+RESPONSIVE
+=========================== */
+
+@media (max-width: 768px) {
+.grid-form,
+.formulario form {
+grid-template-columns: 1fr;
+}
+
+.fila-curso {
+flex-direction: column;
+}
+
+.curso-item {
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+}
+
+.botones {
+flex-direction: column;
+}
+
+.btn,
+.btn-agregar,
+.btn-eliminar,
+.formulario button[type='submit'] {
+width: 100%;
+}
+
+.tarjeta-formulario,
+.formulario {
+padding: 25px;
+}
+
+.pagina-formacion h1 {
+font-size: 1.6rem;
+}
 }

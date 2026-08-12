@@ -56,20 +56,47 @@ function VistaPrevia({ persona, anterior, enviar }) {
           <p><strong>Institución:</strong> {persona.institucion}</p>
           <p><strong>Título:</strong> {persona.titulo}</p>
           <p><strong>Año:</strong> {persona.anio}</p>
-          <p><strong>Cursos:</strong> {persona.cursos}</p>
-        </section>
+          <p><strong>Cursos realizados:</strong></p>
+
+          {persona.cursos.length > 0 ? (
+            <ul>
+                {persona.cursos.map((curso, indice) => (
+                  <li key={indice}>{curso}</li>
+            ))}
+            </ul>
+          ) : (
+            <p>No se registraron cursos.</p>
+          )}
+          </section>
 
         <hr />
 
+        
+
         {/* Sección Experiencia Laboral */}
-        <section className="seccion-resumen">
-          <h3>Experiencia Laboral</h3>
-          <p><strong>Empresa:</strong> {persona.empresa}</p>
-          <p><strong>Cargo:</strong> {persona.cargo}</p>
-          <p><strong>Tiempo:</strong> {persona.tiempo}</p>
-          <p><strong>Funciones:</strong> {persona.funciones}</p>
-          <p><strong>Habilidades:</strong> {persona.habilidades}</p>
-        </section>
+<section className="seccion-resumen">
+  <h3>Experiencia Laboral</h3>
+
+  {persona.experiencias.length > 0 ? (
+    persona.experiencias.map((exp, indice) => (
+      <div key={indice} className="detalle">
+        <p><strong>Empresa:</strong> {exp.empresa}</p>
+        <p><strong>Cargo:</strong> {exp.cargo}</p>
+        <p><strong>Tiempo:</strong> {exp.tiempo}</p>
+        <p><strong>Funciones:</strong> {exp.funciones}</p>
+        <p><strong>Habilidades:</strong> {exp.habilidades}</p>
+        <hr />
+      </div>
+    ))
+  ) : (
+    <p>No se registraron experiencias laborales.</p>
+  )}
+</section>
+
+
+
+
+
 
         <div className="botones">
           <button type="button" className="btn" onClick={anterior}>
