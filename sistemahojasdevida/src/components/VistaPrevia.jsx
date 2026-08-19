@@ -4,7 +4,9 @@ function VistaPrevia({ persona, anterior, enviar }) {
 
   const confirmarEnvio = () => {
     alert("¡Registro completado exitosamente!");
-    if(enviar) enviar();
+    if(enviar) enviar(
+    
+    );
   };
 
   const urlFoto = persona.foto ? URL.createObjectURL(persona.foto) : null;

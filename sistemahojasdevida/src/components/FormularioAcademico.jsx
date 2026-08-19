@@ -28,8 +28,43 @@ function FormacionAcademica({ persona, setPersona, anterior, siguiente }) {
 
   const continuar = (e) => {
     e.preventDefault();
-    if (siguiente) siguiente();
+
+    if (persona.nivel.trim() === "") {
+      alert("Seleccione un nivel de formación.");
+      return;
+    }
+    if (persona.institucion.trim() === "") {
+      alert("Ingrese la institución educativa.");
+      return;
+    }
+
+    if (persona.institucion.trim() === "") {
+      alert("Ingrese la institución");
+      return;
+    }
+
+    if (persona.titulo.trim() === "") {
+      alert("Ingrese el título obtenido.");
+      return;
+    }
+
+
+    if (persona.anio.trim() === "") {
+      alert("Ingrese el año de graduación.");
+      return;
+    }
+
+    if(persona.cursos.length === 0){
+      alert("Ingrese cursos realizados")
+      return;
+    }
+    
+    if (siguiente) {
+      siguiente();
+    }
   };
+
+
 
   return (
     <div className="pagina-formacion">
