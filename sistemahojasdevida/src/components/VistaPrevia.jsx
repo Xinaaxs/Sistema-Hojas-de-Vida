@@ -1,15 +1,10 @@
 import React from 'react';
 
-function VistaPrevia({ persona, anterior, enviar }) {
+function VistaPrevia({ persona, anterior, guardarhojavida }) {
 
-  const confirmarEnvio = () => {
-    alert("¡Registro completado exitosamente!");
-    if(enviar) enviar(
-    
-    );
-  };
-
-  const urlFoto = persona.foto ? URL.createObjectURL(persona.foto) : null;
+  const urlFoto = persona.foto
+    ? URL.createObjectURL(persona.foto)
+    : null;
 
   return (
     <div className="pagina-formacion">
@@ -18,21 +13,25 @@ function VistaPrevia({ persona, anterior, enviar }) {
       <div className="tarjeta-formulario">
         <h2>Vista Previa de Información</h2>
 
-
-
         {/* Muestra la fotografía si el usuario la seleccionó */}
         {urlFoto && (
-          <div className="contenedor-foto" style={{ textAlign: 'center', marginBottom: '20px' }}>
-            <img 
-              src={urlFoto} 
-              alt="Fotografía del aprendiz" 
+          <div
+            className="contenedor-foto"
+            style={{
+              textAlign: 'center',
+              marginBottom: '20px'
+            }}
+          >
+            <img
+              src={urlFoto}
+              alt="Fotografía del aprendiz"
               style={{
                 width: '130px',
                 height: '130px',
                 objectFit: 'cover',
                 borderRadius: '50%',
                 border: '3px solid #007bff'
-              }} 
+              }}
             />
           </div>
         )}
@@ -40,13 +39,35 @@ function VistaPrevia({ persona, anterior, enviar }) {
         {/* Sección Datos Personales */}
         <section className="seccion-resumen">
           <h3>Datos Personales</h3>
-          <p><strong>Nombre:</strong> {persona.nombre || "No especificado"}</p>
-          <p><strong>Edad:</strong> {persona.edad}</p>
-          <p><strong>Ciudad:</strong> {persona.ciudad}</p>
-          <p><strong>Programa:</strong> {persona.programa}</p>
-          <p><strong>Correo:</strong> {persona.correo}</p>
-          <p><strong>Ficha:</strong> {persona.ficha}</p>
-          <p><strong>Jornada:</strong> {persona.jornada}</p>
+
+          <p>
+            <strong>Nombre:</strong>{' '}
+            {persona.nombre || "No especificado"}
+          </p>
+
+          <p>
+            <strong>Edad:</strong> {persona.edad}
+          </p>
+
+          <p>
+            <strong>Ciudad:</strong> {persona.ciudad}
+          </p>
+
+          <p>
+            <strong>Programa:</strong> {persona.programa}
+          </p>
+
+          <p>
+            <strong>Correo:</strong> {persona.correo}
+          </p>
+
+          <p>
+            <strong>Ficha:</strong> {persona.ficha}
+          </p>
+
+          <p>
+            <strong>Jornada:</strong> {persona.jornada}
+          </p>
         </section>
 
         <hr />
@@ -100,15 +121,31 @@ function VistaPrevia({ persona, anterior, enviar }) {
 
 
 
+        {/* Botones */}
         <div className="botones">
-          <button type="button" className="btn" onClick={anterior}>
+
+          <button
+            type="button"
+            className="btn"
+            onClick={anterior}
+          >
             ← Editar datos
           </button>
 
-          <button type="button" className="btn" onClick={confirmarEnvio} style={{backgroundColor: '#28a745', color: 'white'}}>
+          <button
+            type="button"
+            className="btn"
+            onClick={guardarhojavida}
+            style={{
+              backgroundColor: '#28a745',
+              color: 'white'
+            }}
+          >
             Confirmar y Enviar →
           </button>
+
         </div>
+
       </div>
     </div>
   );

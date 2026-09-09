@@ -201,7 +201,6 @@ function ExperienciaLaboral({ persona, setPersona, anterior, siguiente }) {
           <h2>Experiencia Laboral</h2>
 
           <div className="grid-form">
-
             <div className="grupo">
               <label>Empresa</label>
 

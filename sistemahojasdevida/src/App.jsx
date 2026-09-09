@@ -39,6 +39,45 @@ function App() {
 
   })
 
+
+  //Conectar react con Flask
+  const guardarhojavida = async () => {
+
+    try{
+
+    const datosapi = {
+        nombre: persona.nombre,
+        edad: persona.edad,
+        ciudad: persona.ciudad,
+        correo: persona.correo,
+        programa: persona.programa,
+        ficha: persona.ficha,
+        jornada: persona.jornada
+    };
+
+    const respuesta = await fetch(
+      "http://127.0.0.1:5000/api/registrohv",
+      {
+        method: "POST",
+        headers:{
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(datosapi)
+      }
+    );
+
+
+    const resultado = await respuesta.json();
+
+    console.log("respuesta realizada",resultado);
+
+    }catch (error){
+      console.error( "Error al conectar con Flask",error);
+  }
+  };
+
+
+
   return (
     <div className='contenedor'>
       <Header />
@@ -71,13 +110,11 @@ function App() {
 
       {paso === 4 && (
         <VistaPrevia
-          persona = {persona}
+          persona={persona}
           anterior={() => setPaso(3)}
-          enviar={() => {
-          }}
-        />
-      )}
-
+          guardarhojavida={guardarhojavida}
+  />
+)}
       <Footer />
     </div>
   );
