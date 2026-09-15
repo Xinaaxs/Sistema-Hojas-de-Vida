@@ -39,42 +39,86 @@ function App() {
 
   })
 
+//guardar datos personales
 
-  //Conectar react con Flask
-  const guardarhojavida = async () => {
+const guardarhojavida = async () => {
 
-    try{
+  try {
 
     const datosapi = {
-        nombre: persona.nombre,
-        edad: persona.edad,
-        ciudad: persona.ciudad,
-        correo: persona.correo,
-        programa: persona.programa,
-        ficha: persona.ficha,
-        jornada: persona.jornada
+      nombre: persona.nombre,
+      edad: persona.edad,
+      ciudad: persona.ciudad,
+      correo: persona.correo,
+      fotografia: null,
+      programa: persona.programa,
+      ficha: persona.ficha,
+      jornada: persona.jornada
     };
 
     const respuesta = await fetch(
       "http://127.0.0.1:5000/api/registrohv",
       {
         method: "POST",
-        headers:{
+        headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(datosapi)
       }
     );
 
-
     const resultado = await respuesta.json();
 
-    console.log("respuesta realizada",resultado);
+    console.log("Hoja de vida registrada:", resultado);
 
-    }catch (error){
-      console.error( "Error al conectar con Flask",error);
+    return resultado.id;
+
+  } catch (error) {
+
+    console.error("Error al conectar con Flask", error);
+
+    return null;
   }
-  };
+};
+
+
+//guardar estudios
+const guardarformacion = async (idHojaVida) => {
+
+  try {
+
+    const datosapi = {
+      nivel: persona.nivel,
+      institucion: persona.institucion,
+      titulo: persona.titulo,
+      anio_graduacion: persona.anio
+    };
+
+    const respuesta = await fetch(
+      `http://127.0.0.1:5000/api/hojasvida/${idHojaVida}/estudios`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(datosapi)
+      }
+    );
+
+    const resultado = await respuesta.json();
+    console.log("Estudio registrado:", resultado);
+    return resultado.id;
+  } catch (error) {
+    console.error("Error al registrar estudio:", error);
+    return null;
+  }
+};
+
+//Guardar Cursos
+
+
+
+
 
 
 
