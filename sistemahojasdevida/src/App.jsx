@@ -6,10 +6,27 @@ import FormacionAcademica from './components/FormularioAcademico';
 import ExperienciaLaboral from './components/FormularioExperiencia';
 import VistaPrevia from './components/VistaPrevia';
 import Footer from './components/Footer';
+import Login from './components/NavigatorLogin';
 
 import './App.css';
+import { cerrarSesion } from '../services/api';
 
 function App() {
+
+  //estado de autentificar el usuario
+  const [usuario, setusuario] = useState(() => {
+
+    const guardado = localStorage.getItem("usuario");
+
+    return guardado ? JSON.parse(guardado) : null;
+
+  });
+
+  const salir = () => {
+      cerrarSesion();
+      setusuario(null);
+      setPaso(1);
+  };
 
   const [paso, setPaso] = useState(1);
 
@@ -57,7 +74,8 @@ function App() {
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
           },
           body: JSON.stringify(datosapi)
         }
@@ -96,7 +114,8 @@ function App() {
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
           },
           body: JSON.stringify(datosapi)
         }
@@ -130,7 +149,8 @@ function App() {
           {
             method: "POST",
             headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${localStorage.getItem("token")}`
             },
             body: JSON.stringify({
               nombre: curso
@@ -170,7 +190,8 @@ function App() {
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
           },
           body: JSON.stringify(datosapi)
         }
@@ -204,7 +225,8 @@ function App() {
           {
             method: "POST",
             headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${localStorage.getItem("token")}`
             },
             body: JSON.stringify({
               nombre: habilidad
@@ -260,43 +282,67 @@ function App() {
   return (
     <div className='contenedor'>
 
-      <Header />
+      {!usuario ? (
 
-      {paso === 1 && (
-        <FormularioDatos
-          persona={persona}
-          setPersona={setPersona}
-          siguiente={() => setPaso(2)}
-        />
+        <Login onlogin={setusuario}/>
+
+      ) : usuario.rol === "aprendiz" ? (
+
+        <>
+          <Header />
+
+          <h3>
+            Bienvenido, {usuario.nombre}
+          </h3>
+
+          <button onClick={salir}>Cerrar sesión</button>
+
+          {paso === 1 && (
+            <FormularioDatos
+              persona={persona}
+              setPersona={setPersona}
+              siguiente={() => setPaso(2)}
+            />
+          )}
+
+          {paso === 2 && (
+            <FormacionAcademica
+              persona={persona}
+              setPersona={setPersona}
+              anterior={() => setPaso(1)}
+              siguiente={() => setPaso(3)}
+            />
+          )}
+
+          {paso === 3 && (
+            <ExperienciaLaboral
+              persona={persona}
+              setPersona={setPersona}
+              anterior={() => setPaso(2)}
+              siguiente={() => setPaso(4)}
+            />
+          )}
+
+          {paso === 4 && (
+            <VistaPrevia
+              persona={persona}
+              anterior={() => setPaso(3)}
+              guardarhojavida={guardarTodo}
+            />
+          )}
+
+          <Footer />
+        </>
+
+      ) : (
+
+        <>
+          <h3>Bienvenido, {usuario.nombre}</h3>
+
+          <button onClick={salir}>Cerrar sesión</button>
+        </>
+
       )}
-
-      {paso === 2 && (
-        <FormacionAcademica
-          persona={persona}
-          setPersona={setPersona}
-          anterior={() => setPaso(1)}
-          siguiente={() => setPaso(3)}
-        />
-      )}
-
-      {paso === 3 && (
-        <ExperienciaLaboral
-          persona={persona}
-          setPersona={setPersona}
-          anterior={() => setPaso(2)}
-          siguiente={() => setPaso(4)}
-        />
-      )}
-
-      {paso === 4 && (
-        <VistaPrevia
-          persona={persona}
-          anterior={() => setPaso(3)}
-          guardarhojavida={guardarTodo}
-        />
-      )}
-
-      <Footer />
 
     </div>
   );
